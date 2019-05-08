@@ -6,9 +6,9 @@ WORKDIR /go/src/github.com/500px/redash
 COPY package.json package-lock.json /go/src/github.com/500px/redash/
 RUN npm install
 
-#COPY . /go/src/github.com/500px/redash/
-COPY docker/* /go/src/github.com/500px/redash/
-COPY . .
+COPY . /go/src/github.com/500px/redash/
+#COPY docker/* /go/src/github.com/500px/redash/
+#COPY . .
 #RUN npm run build
 EXPOSE 5000
 
