@@ -1,12 +1,12 @@
 FROM node:10 as frontend-builder
 MAINTAINER platform <platform@500px.com>
-WORKDIR /go/src/github.com/500px/timelines-indexer
+WORKDIR /go/src/github.com/500px/redash
 
-WORKDIR /frontend
-COPY package.json package-lock.json /go/src/github.com/500px/redash
+#WORKDIR /frontend
+COPY package.json package-lock.json /go/src/github.com/500px/redash/
 RUN npm install
 
-#COPY . /go/src/github.com/500px/timelines-indexer
+#COPY . /go/src/github.com/500px/redash/
 COPY docker/* /go/src/github.com/500px/redash/
 COPY . .
 #RUN npm run build
