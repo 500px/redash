@@ -1,0 +1,12 @@
+name: redash
+roleName: eks-us-east-1-redash
+
+container:
+  port: 5000
+hpa:
+  enabled: true
+ingress:
+  enabled: true
+  private: false
+  names:
+    - "redash"

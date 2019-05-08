@@ -1,0 +1,8 @@
+resources:
+  requests:
+    memory: "300Mi"
+    cpu: "200m"
+
+ingress:
+  securityGroupIds:
+    - "sg-0dec4314c6fa52886"

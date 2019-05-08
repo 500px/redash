@@ -1,0 +1,30 @@
+sudo: required
+services:
+  - docker
+
+env:
+  global:
+    # travis shared-services
+    - AWS_ACCESS_KEY_ID=AKIAIQDUGPALDOTSLBZQ
+    # travis shared-services secret
+    - secure: "IrW6N+j5nqgo0C35VOgxFKvsOIjdYfnmhRWsTVxFHfqH8+Cf7HSi7/ItFYsdlwtBqZzMPR0YWD/7PEDA2nwDpmmB+3aWyBzJCdUm/uKNYbuTOBKiDqEzo3Ytgx8NIq+L9fPQgup7Q9QsN0OwdAWt04OJxLCgYSolL18ITtQa7Lk="
+    - DOCKER_USERNAME=500pxadmin
+    # DOCKER_PASSWORD
+    - secure: "XFgiV22hthjWKrJzjyvIgszsfeAXPji/QON6uQCHuyebagNOBS5DFoKP1/8VhoLB08c54pVEDhlJW6oZ8nDoY7/c0b3Tk/BvqrnpS2ls2luW7blYqWNM7aLmEiy40SPkngXZHCFr8G1EzCPq1uME6eEvUPsP4AkeDrmLknHCvRw="
+
+before_install:
+  # Install dep
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+  - export PATH="$HOME/bin:$PATH"
+
+script: make build test
+
+before_deploy:
+  - pip install --upgrade --user awscli
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: "./release.sh $TRAVIS_TAG;"
+  on:
+    tags: true
