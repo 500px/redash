@@ -37,7 +37,7 @@ backend-unit-tests: up test_db
 frontend-unit-tests: bundle
 	npm install
 	npm run bundle
-  npm test
+	npm test
 
 test: lint backend-unit-tests frontend-unit-tests
 
