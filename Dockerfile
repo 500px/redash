@@ -5,7 +5,7 @@ COPY package.json package-lock.json /frontend/
 RUN npm install
 
 COPY . /frontend
-RUN npm run build
+#RUN npm run build
 EXPOSE 5000
 
 FROM redash/base:latest
