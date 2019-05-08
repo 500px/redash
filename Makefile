@@ -37,7 +37,15 @@ backend-unit-tests: up test_db
 frontend-unit-tests: bundle
 	npm install
 	npm run bundle
-@@ -49,9 +16,3 @@ watch: bundle
+  npm test
+
+test: lint backend-unit-tests frontend-unit-tests
+
+build: bundle
+	npm run build
+
+watch: bundle
+	npm run watch
 
 start: bundle
 	npm run start
